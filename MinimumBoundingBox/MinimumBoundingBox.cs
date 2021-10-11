@@ -25,6 +25,10 @@ namespace MinimumBoundingBox
             if (inputPoints.Count < 3)
                 return new Rectangle3d();
 
+
+            // Remove any duplicated points
+            inputPoints = RemoveDuplicatePoints(inputPoints, Rhino.RhinoDoc.ActiveDoc.ModelAbsoluteTolerance);
+
             // We transform the geometry to the XY for the purpose of calculation
             Transform toXY = Transform.PlaneToPlane(inputPlane, Plane.WorldXY);
             Transform toInputPlane;
@@ -121,6 +125,24 @@ namespace MinimumBoundingBox
             return new Vector2d(newX, newY);
         }
 
+        static List<Point3d> RemoveDuplicatePoints(List<Point3d> inputPoints, double tolerance)
+        {
+            List<Point3d> outputPoints = new List<Point3d>();
 
+            foreach (Point3d pt in inputPoints)
+            {
+                bool addMe = true;
+
+                foreach (Point3d exPt in outputPoints)
+                {
+                    if ((pt - exPt).Length < tolerance)
+                        addMe = false;
+                }
+                if (addMe)
+                    outputPoints.Add(pt);
+            }
+
+            return outputPoints;
+        }
     }
 }

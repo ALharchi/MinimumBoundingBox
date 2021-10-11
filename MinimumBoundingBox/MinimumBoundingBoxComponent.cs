@@ -15,7 +15,7 @@ namespace MinimumBoundingBox
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddPointParameter("Points", "P", "Points to contain.", GH_ParamAccess.list);
+            pManager.AddPointParameter("Points", "P", "Points to contain. (Need a convex cull input!)", GH_ParamAccess.list);
             pManager.AddPlaneParameter("Plane", "Plane", "Bounding box orientation plane.", GH_ParamAccess.item, Plane.WorldXY);
         }
 
@@ -39,7 +39,10 @@ namespace MinimumBoundingBox
                 return;
             }
 
-            DA.SetData(0, MinBoundingBox.GetMinimumBoundingBox(ConvexHull.GetConvexHull(inputPoints), inputPlane));
+            Rectangle3d outputRectangle = MinBoundingBox.GetMinimumBoundingBox(inputPoints, inputPlane);
+
+            DA.SetData(0, outputRectangle);
+
         }
 
     }

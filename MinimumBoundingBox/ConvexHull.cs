@@ -1,4 +1,5 @@
 ﻿using Rhino.Geometry;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,6 +15,7 @@ namespace MinimumBoundingBox
         /// <returns>Points that constitute the polygon enclosing all the points</returns>
         public static List<Point3d> GetConvexHull(List<Point3d> inputPoints)
         {
+
             List<Point3d> outputPoints = new List<Point3d>();
 
             inputPoints.Sort((a, b) => a.X.CompareTo(b.X));
