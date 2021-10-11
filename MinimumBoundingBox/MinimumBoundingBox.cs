@@ -125,6 +125,13 @@ namespace MinimumBoundingBox
             return new Vector2d(newX, newY);
         }
 
+
+        /// <summary>
+        /// Remove all duplicate points in a list of points
+        /// </summary>
+        /// <param name="inputPoints">Points to clean</param>
+        /// <param name="tolerance">tolerance (in all axes)</param>
+        /// <returns>Unique points</returns>
         static List<Point3d> RemoveDuplicatePoints(List<Point3d> inputPoints, double tolerance)
         {
             List<Point3d> outputPoints = new List<Point3d>();
