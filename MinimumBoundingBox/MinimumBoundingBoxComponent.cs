@@ -39,10 +39,10 @@ namespace MinimumBoundingBox
                 return;
             }
 
-            Rectangle3d outputRectangle = MinBoundingBox.GetMinimumBoundingBox(inputPoints, inputPlane);
+            List<Point3d> convexHullPoints = ConvexHull.GetConvexHull(inputPoints, inputPlane);
+            Rectangle3d outputRectangle = MinBoundingBox.GetMinimumBoundingBox(convexHullPoints, inputPlane);
 
             DA.SetData(0, outputRectangle);
-
         }
 
     }
