@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace MinimumBoundingBox
 {
-    public class ConvexHull
+    public class ConvexHull2D
     {
 
         /// <summary>

@@ -10,7 +10,7 @@ namespace MinimumBoundingBox
     /// Available at: https://github.com/cansik/LongLiveTheSquare
     /// The goal of this reimplemetation is to support native Rhino/Grasshopper geometric types and run without dependecies and includes its own convexhull computation.
     /// </summary>
-    public class MinBoundingBox
+    public class MinBoundingBox2D
     {
 
         /// <summary>
