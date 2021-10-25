@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("MinimumBoundingBox")]
-[assembly: AssemblyDescription("Compute the minimum bounding box from a set of points in a 2D space.")]
+[assembly: AssemblyDescription("Compute the minimum bounding box from a set of geometries in 2D/3D space.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CITA")]
 [assembly: AssemblyProduct("MinimumBoundingBox")]
