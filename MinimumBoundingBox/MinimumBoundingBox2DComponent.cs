@@ -8,7 +8,7 @@ namespace MinimumBoundingBox
     public class MinimumBoundingBox2DComponent : GH_Component
     {
         public MinimumBoundingBox2DComponent() : base("Minimum Bounding Box 2D", "MinBB2D", "Compute the minimum bounding box of a set of points in 2D.", "Curve", "Util") { }
-        protected override System.Drawing.Bitmap Icon { get { return Properties.Resources.icon; } }
+        protected override System.Drawing.Bitmap Icon { get { return Properties.Resources.iconMinBB2D; } }
         public override Guid ComponentGuid { get { return new Guid("03f1bc0e-3399-4df7-ac85-83f35af8cf6f"); } }
         public override GH_Exposure Exposure { get { return GH_Exposure.tertiary; } }
 

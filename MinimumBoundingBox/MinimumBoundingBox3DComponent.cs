@@ -9,7 +9,7 @@ namespace MinimumBoundingBox
     {
 
         public MinimumBoundingBox3DComponent() : base("Minimum Bounding Box 3D", "MinBB3D", "Compute the minimum bounding box of a set of geometries in 3D.", "Mesh", "Triangulation") { }
-        protected override System.Drawing.Bitmap Icon { get { return null; } }
+        protected override System.Drawing.Bitmap Icon { get { return Properties.Resources.iconMinBB3D; } }
         public override Guid ComponentGuid { get { return new Guid("314230da-27fa-493c-87ad-06fd8134e1d4"); } }
         public override GH_Exposure Exposure { get { return GH_Exposure.quinary; } }
 
