@@ -41,13 +41,19 @@ namespace MinimumBoundingBox
             }
 
             // Check if the points are coplanar
-            if (!Point3d.ArePointsCoplanar(inputPoints, Rhino.RhinoDoc.ActiveDoc.ModelAbsoluteTolerance))
+            double tolerance = 1e-6;
+            try
+            {
+                tolerance = Rhino.RhinoDoc.ActiveDoc.ModelAbsoluteTolerance;
+            } catch { }
+
+            if (!Point3d.ArePointsCoplanar(inputPoints, tolerance))
             {
                 this.AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "The input points needs to be coplanar!");
                 return;
             }
 
-            List<Point3d> convexHullPoints = ConvexHull2D.GetConvexHull(inputPoints, inputPlane);
+            List<Point3d> convexHullPoints = ConvexHull2D.GetConvexHull(inputPoints, inputPlane, tolerance);
             Rectangle3d outputRectangle = MinBoundingBox2D.GetMinimumBoundingBox(convexHullPoints, inputPlane);
 
             DA.SetData(0, outputRectangle);
