@@ -15,11 +15,10 @@ namespace MinimumBoundingBox
         /// <param name="inputPoints">Points for convex hull solution</param>
         /// <param name="inputPlane">Working plane for the convex hull algorithm</param>
         /// <returns>Points that constitute the polygon enclosing all the points</returns>
-        public static List<Point3d> GetConvexHull(List<Point3d> inputPoints, Plane inputPlane)
+        public static List<Point3d> GetConvexHull(List<Point3d> inputPoints, Plane inputPlane, double tolerance)
         {
-
             // Remove any duplicated points - with the document absolute tolerance
-            inputPoints = RemoveDuplicatePoints(inputPoints, Rhino.RhinoDoc.ActiveDoc.ModelAbsoluteTolerance);
+            inputPoints = RemoveDuplicatePoints(inputPoints, tolerance);
 
             Transform toXY = Transform.PlaneToPlane(inputPlane, Plane.WorldXY);
             Transform toInputPlane = Transform.PlaneToPlane(Plane.WorldXY, inputPlane);

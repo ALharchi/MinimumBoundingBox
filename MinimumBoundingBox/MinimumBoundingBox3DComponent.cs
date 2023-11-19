@@ -73,7 +73,14 @@ namespace MinimumBoundingBox
             if (pointsToContain.Count < 3)
                 return;
 
-            if (Point3d.ArePointsCoplanar(pointsToContain, Rhino.RhinoDoc.ActiveDoc.ModelAbsoluteTolerance))
+            double tolerance = 1e-6;
+            try
+            {
+                tolerance = Rhino.RhinoDoc.ActiveDoc.ModelAbsoluteTolerance;
+            }
+            catch { }
+
+            if (Point3d.ArePointsCoplanar(pointsToContain, tolerance))
             {
                 this.AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Input geometries are co-planar points. You may want to consider using the 2D component!");
                 return;
